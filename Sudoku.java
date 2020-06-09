@@ -10,8 +10,8 @@ public class Sudoku {
     public static void main(String[] args) {
         System.out.println("Hello Welcome to Sudoku Solver");
         String filename =  menu();
-        readfile(filename);
-
+        int[][] board = readfile(filename);
+        printBoard(board);
 
     }
 
@@ -34,17 +34,14 @@ public class Sudoku {
         try {
             File file = new File(filename);
             Scanner sc = new Scanner(file);
-            int i = 0;
-            int j = 0;
+            int i = 0, j = 0;
             while (sc.hasNextInt()) {
               int data = sc.nextInt();
-              System.out.print(data);
               if(j > 8 ) {
                   j = 0;
-                  board[i][j] = data;
-                  j++;
                   i++;
-                  System.out.println();
+                  board[i][j] = data;
+                  j++; 
               } else {
                 board[i][j] = data;
                 j++;
@@ -57,6 +54,31 @@ public class Sudoku {
             e.printStackTrace();
           }
         return board;
+    }
+
+
+
+    public static void printBoard(int[][] board) {
+      int i = 0;
+      System.out.println("|-----------------------|");
+      for (int[] row : board) {
+        int j = 0;
+        for (int val : row) {
+          if(j == 0) {
+            System.out.print("| ");
+          }
+          System.out.print(val + " ");
+          j++;
+          if(j % 3 == 0) {
+            System.out.print("| ");
+          } 
+        }
+        i++;
+        System.out.println();
+        if(i % 3 == 0 ) {
+          System.out.println("|-----------------------|");
+        }
+      }
     }
 
 }
