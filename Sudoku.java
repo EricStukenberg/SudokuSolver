@@ -1,14 +1,17 @@
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-// import javax.swing.JButton;
-// import javax.swing.JFileChooser;
+import java.io.File; 
+import java.io.FileNotFoundException;  
+import java.util.Scanner; 
 
 public class Sudoku {
 
 
     public static void main(String[] args) {
-        System.out.println("hello");
-        menu();
+        System.out.println("Hello Welcome to Sudoku Solver");
+        String filename =  menu();
+        readfile(filename);
+
 
     }
 
@@ -23,8 +26,37 @@ public class Sudoku {
 
         }
         System.out.println("You chose: " + fc.getSelectedFile().getAbsolutePath());
-        return "";
+        return fc.getSelectedFile().getAbsolutePath();
     }
+ 
+    public static int[][] readfile(String filename) {
+        int[][] board = new int[9][9];
+        try {
+            File file = new File(filename);
+            Scanner sc = new Scanner(file);
+            int i = 0;
+            int j = 0;
+            while (sc.hasNextInt()) {
+              int data = sc.nextInt();
+              System.out.print(data);
+              if(j > 8 ) {
+                  j = 0;
+                  board[i][j] = data;
+                  j++;
+                  i++;
+                  System.out.println();
+              } else {
+                board[i][j] = data;
+                j++;
+              }
 
+            }
+            sc.close();
+          } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+          }
+        return board;
+    }
 
 }
