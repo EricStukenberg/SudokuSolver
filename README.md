@@ -7,7 +7,7 @@ To Run:
   and change this part of the line "/Users/ericstukenberg/Development/JavaProjects/SudokuSolver" to the path to where you have cloned the   repository. This is all to get JFile to work onyour computer.
  
 2. Then Compile and run:
-  > javac Sudoku.java
+  > javac Sudoku.java <br/>
   ||
   > java Sudoku.java
 
