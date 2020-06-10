@@ -8,5 +8,6 @@ To Run:
  
 2. Then Compile and run:
   > javac Sudoku.java
+  ||
   > java Sudoku.java
 
